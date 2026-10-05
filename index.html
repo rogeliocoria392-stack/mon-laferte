@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Laferte | Sitio Oficial</title>
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===================================
+           VARIABLES & RESETS
+        =================================== */
+        :root {
+            --primary-color: #d62828;      /* Rojo Pasión */
+            --secondary-color: #003049;    /* Azul Noche */
+            --accent-color: #f77f00;       /* Naranja Cálido */
+            --bg-dark: #121212;            /* Fondo Oscuro Elegante */
+            --card-bg: #1e1e1e;            /* Fondo de tarjetas */
+            --text-light: #f8f9fa;         /* Texto claro */
+            --text-muted: #b0b0b0;         /* Texto secundario */
+            --gold: #fcbf49;               /* Tono Dorado */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ===================================
+           HEADER & NAV
+        =================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-color);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-light);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===================================
+           HERO SECTION
+        =================================== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(18, 18, 18, 1)), 
+                        url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            text-shadow: 3px 3px 10px rgba(214, 40, 40, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        .btn-main {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary-color);
+            color: var(--text-light);
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(214, 40, 40, 0.5);
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-main:hover {
+            background: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(214, 40, 40, 0.8);
+        }
+
+        /* ===================================
+           SECCIONES GENERALES
+        =================================== */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===================================
+           BIOGRAFÍA
+        =================================== */
+        .bio-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .bio-img {
+            position: relative;
+        }
+
+        .bio-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: -15px 15px 0px var(--primary-color);
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+
+        .bio-img img:hover {
+            filter: grayscale(0%);
+        }
+
+        .bio-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        .bio-text strong {
+            color: var(--text-light);
+        }
+
+        /* ===================================
+           DISCOGRAFÍA
+        =================================== */
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .album-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(214, 40, 40, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .album-cover {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .album-info {
+            padding: 20px;
+        }
+
+        .album-info h3 {
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .album-info span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .btn-listen {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-listen:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* ===================================
+           GALERÍA
+        =================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ===================================
+           TOUR SECCIÓN
+        =================================== */
+        .tour-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tour-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .tour-date {
+            font-weight: 800;
+            color: var(--gold);
+            font-size: 1.2rem;
+            width: 120px;
+        }
+
+        .tour-place h4 {
+            font-size: 1.2rem;
+        }
+
+        .tour-place p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .btn-ticket {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+
+        .btn-ticket:hover {
+            background: var(--accent-color);
+        }
+
+        /* ===================================
+           CONTACTO & FOOTER
+        =================================== */
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            background: #1e1e1e;
+            color: white;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .contact-form button {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #090909;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #222;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 12px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .bio-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .tour-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <header>
+        <a href="#inicio" class="logo">Mon <span>Laferte</span></a>
+        <nav>
+            <ul>
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#biografia" class="nav-link">Biografía</a></li>
+                <li><a href="#discografia" class="nav-link">Discografía</a></li>
+                <li><a href="#galeria" class="nav-link">Galería</a></li>
+                <li><a href="#tour" class="nav-link">Tour</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- INICIO (HERO) -->
+    <section id="inicio" class="hero">
+        <h1>Mon Laferte</h1>
+        <p>"Voz, pasión y arte sin fronteras"</p>
+        <a href="#discografia" class="btn-main"><i class="fas fa-play"></i> Escuchar Música</a>
+    </section>
+
+    <!-- BIOGRAFÍA -->
+    <section id="biografia">
+        <h2 class="section-title">Biografía</h2>
+        <div class="bio-container">
+            <div class="bio-img">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Mon Laferte Arte">
+            </div>
+            <div class="bio-text">
+                <p><strong>Norma Montserrat Bustamante Laferte</strong>, conocida artísticamente como <strong>Mon Laferte</strong>, es una cantautora, música y pintora chilenomexicana. Es reconocida globalmente por su poderosa interpretación vocal y su versatilidad para fusionar géneros como el bolero, cumbia, pop, rock, ranchera y ska.</p>
+                <p>Inició su trayectoria musical desde una temprana edad en Viña del Mar, Chile. Con una carrera independiente construida a base de talento y perseverancia en México, ha logrado consolidarse como una de las artistas latinoamericanas más aclamadas de la era moderna, acumulando múltiples premios **Grammy Latinos**.</p>
+                <p>Además de la música, Mon destaca en artes plásticas como la pintura, expresando sus emociones en lienzos llenos de color, figuras expresivas e historias que cautivan a sus seguidores.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCOGRAFÍA -->
+    <section id="discografia">
+        <h2 class="section-title">Discografía Relevante</h2>
+        <div class="albums-grid">
+            
+            <!-- Álbum 1 -->
+            <div class="album-card">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Mon Laferte Vol. 1" class="album-cover">
+                <div class="album-info">
+                    <h3>Mon Laferte Vol. 1</h3>
+                    <span>2015 • Álbum de Estudio</span>
+                    <a href="javascript:void(0)" class="btn-listen" onclick="playMusic('Tu Falta De Querer')"><i class="fas fa-play-circle"></i> Reproducir Populares</a>
+                </div>
+            </div>
+
+            <!-- Álbum 2 -->
+            <div class="album-card">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="La Trenza" class="album-cover">
+                <div class="album-info">
+                    <h3>La Trenza</h3>
+                    <span>2017 • Álbum de Estudio</span>
+                    <a href="javascript:void(0)" class="btn-listen" onclick="playMusic('Amárrame')"><i class="fas fa-play-circle"></i> Reproducir Populares</a>
+                </div>
+            </div>
+
+            <!-- Álbum 3 -->
+            <div class="album-card">
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80" alt="Norma" class="album-cover">
+                <div class="album-info">
+                    <h3>Norma</h3>
+                    <span>2018 • Grabado en Vivo</span>
+                    <a href="javascript:void(0)" class="btn-listen" onclick="playMusic('El Beso')"><i class="fas fa-play-circle"></i> Reproducir Populares</a>
+                </div>
+            </div>
+
+            <!-- Álbum 4 -->
+            <div class="album-card">
+                <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="1940 Carmen" class="album-cover">
+                <div class="album-info">
+                    <h3>1940 Carmen</h3>
+                    <span>2021 • Álbum Conceptual</span>
+                    <a href="javascript:void(0)" class="btn-listen" onclick="playMusic('Algo Es Mejor')"><i class="fas fa-play-circle"></i> Reproducir Populares</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria">
+        <h2 class="section-title">Galería de Momentos</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" alt="En vivo 1"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=600&q=80" alt="En vivo 2"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1469488865564-c2de10f69f96?auto=format&fit=crop&w=600&q=80" alt="En vivo 3"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" alt="En vivo 4"></div>
+        </div>
+    </section>
+
+    <!-- TOUR -->
+    <section id="tour">
+        <h2 class="section-title">Próximos Conciertos</h2>
+        <div class="tour-list">
+            <div class="tour-item">
+                <div class="tour-date">15 NOV</div>
+                <div class="tour-place">
+                    <h4>Auditorio Nacional</h4>
+                    <p>Ciudad de México, México</p>
+                </div>
+                <a href="javascript:void(0)" class="btn-ticket" onclick="buyTicket('Ciudad de México')">Boletos</a>
+            </div>
+
+            <div class="tour-item">
+                <div class="tour-date">22 NOV</div>
+                <div class="tour-place">
+                    <h4>Movistar Arena</h4>
+                    <p>Santiago, Chile</p>
+                </div>
+                <a href="javascript:void(0)" class="btn-ticket" onclick="buyTicket('Santiago')">Boletos</a>
+            </div>
+
+            <div class="tour-item">
+                <div class="tour-date">05 DIC</div>
+                <div class="tour-place">
+                    <h4>Luna Park</h4>
+                    <p>Buenos Aires, Argentina</p>
+                </div>
+                <a href="javascript:void(0)" class="btn-ticket" onclick="buyTicket('Buenos Aires')">Boletos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <h2 class="section-title">Boletín & Contacto</h2>
+        <div class="contact-container">
+            <p style="margin-bottom: 25px; color: var(--text-muted);">Inscríbete para recibir noticias exclusivas de lanzamientos, fechas de tours y arte de Mon Laferte.</p>
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                <input type="text" id="name" placeholder="Tu Nombre" required>
+                <input type="email" id="email" placeholder="Tu Correo Electrónico" required>
+                <textarea rows="4" placeholder="Deja un mensaje para la comunidad..."></textarea>
+                <button type="submit" class="btn-main">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://spotify.com" target="_blank"><i class="fab fa-spotify"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p>&copy; Sitio Fan/Tributo - Diseñado para Sublime Text HTML5.</p>
+    </footer>
+
+    <!-- JAVASCRIPT FUNCIONAL -->
+    <script>
+        // Cambiar estilo de barra de navegación según la sección visible
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Funciones interactivas para botones
+        function playMusic(songName) {
+            alert("Reproduciendo fragmento de: " + songName + " 🎵\n(Esta es una demostración interactiva)");
+        }
+
+        function buyTicket(city) {
+            alert("Redirigiendo a la taquilla oficial para el concierto en " + city + " 🎟️");
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            alert("¡Gracias por registrarte, " + name + "! Te mantendremos informado sobre Mon Laferte.");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
